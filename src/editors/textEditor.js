@@ -52,7 +52,8 @@
         var isMultipleSelection = !(selected[0] === selected[2] && selected[1] === selected[3]);
         if ((ctrlDown && !isMultipleSelection) || event.altKey) { //if ctrl+enter or alt+enter, add new line
           if(that.isOpened()){
-            that.setValue(that.getValue() + '\n');
+            var caretPosition = that.wtDom.getCaretPosition(that.TEXTAREA);
+            that.setValue(that.getValue().substr(0, caretPosition) + '\n' + that.getValue().substr(caretPosition));
             that.focus();
           } else {
             that.beginEditing(that.originalValue + '\n')
