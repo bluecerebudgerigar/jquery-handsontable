@@ -55,6 +55,8 @@
             var caretPosition = that.wtDom.getCaretPosition(that.TEXTAREA);
             that.setValue(that.getValue().substr(0, caretPosition) + '\n' + that.getValue().substr(caretPosition));
             that.focus();
+            that.wtDom.setCaretPosition(that.TEXTAREA, caretPosition, caretPosition);
+
           } else {
             that.beginEditing(that.originalValue + '\n')
           }
